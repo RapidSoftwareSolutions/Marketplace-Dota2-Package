@@ -1,0 +1,6 @@
+/logs/
+/vendor/
+/test/rapid.runscope
+/test/rapid.test
+/.idea
+composer.lock

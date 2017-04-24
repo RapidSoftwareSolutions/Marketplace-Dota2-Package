@@ -1,0 +1,419 @@
+{
+  "package": "Dota2",
+  "tagline": "Dota2 API",
+  "description": "Dota2",
+  "image": "http:\/\/logo.clearbit.com\/blog.dota2.com/",
+  "repo": "https:\/\/github.com\/RapidSoftwareSolutions\/Marketplace-Dota2-Package",
+  "keywords": [
+  ],
+  "accounts": {
+    "domain": "blog.dota2.com",
+    "credentials": [
+      "apiKey"
+    ]
+  },
+  "blocks": [
+    {
+      "name": "getLeagueListing",
+      "description": "Information about DotaTV-supported leagues.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "The ISO639-1 language code for the language all tokenized strings should be returned in. Not all strings have been translated to every language. If a language does not have a string, the English string will be returned instead. If this parameter is omitted the string token will be returned for the strings.",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getLiveLeagueGames",
+      "description": "A list of in-progress league matches, as well as details of that match as it unfolds.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getMatchDetails",
+      "description": "Information about a particular match.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "matchId",
+          "type": "Number",
+          "info": "Id of the match",
+          "required": true
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getMatchHistory",
+      "description": "A list of matches, filterable by various parameters.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "heroId",
+          "type": "Number",
+          "info": "A list of hero IDs can be found via the GetHeroes method.",
+          "required": false
+        },
+        {
+          "name": "gameMode",
+          "type": "Number",
+          "info": "0 - None 1 - All Pick 2 - Captain's Mode 3 - Random Draft 4 - Single Draft 5 - All Random  6 - Intro  7 - Diretide 8 - Reverse Captain's Mode 9 - The Greeviling 10 - Tutorial 11 - Mid Only 12 - Least Played 13 - New Player Pool 14 - Compendium Matchmaking 16 - Captain's Draft",
+          "required": false
+        },
+        {
+          "name": "skill",
+          "type": "Number",
+          "info": "Skill bracket for the matches (Ignored if an account ID is specified). 0 - Any 1 - Normal 2 - High 3 - Very High",
+          "required": false
+        },
+        {
+          "name": "minPlayers",
+          "type": "Number",
+          "info": "Minimum amount of players in a match for the match to be returned.",
+          "required": false
+        },
+        {
+          "name": "accountId",
+          "type": "Number",
+          "info": "32-bit account ID.",
+          "required": false
+        },
+        {
+          "name": "leagueId",
+          "type": "String",
+          "info": "Only return matches from this league. A list of league IDs can be found via the GetLeagueListing method.",
+          "required": false
+        },
+        {
+          "name": "startAtMatchId",
+          "type": "Number",
+          "info": "Start searching for matches equal to or older than this match ID.",
+          "required": false
+        },
+        {
+          "name": "matchesRequested",
+          "type": "Number",
+          "info": "Amount of matches to include in results (default: 25).",
+          "required": false
+        },
+        {
+          "name": "tournamentGamesOnly",
+          "type": "String",
+          "info": "Whether to limit results to tournament matches. (0 = false, 1 = true)",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getMatchHistoryBySequenceNum",
+      "description": "A list of matches ordered by their sequence num.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "startAtMatchSeqNum",
+          "type": "Number",
+          "info": "The match sequence number to start returning results from.",
+          "required": false
+        },
+        {
+          "name": "matchesRequested",
+          "type": "Number",
+          "info": "Amount of matches to include in results (default: 25).",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getScheduledLeagueGames",
+      "description": "A list of scheduled league games coming up.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "dateMin",
+          "type": "Number",
+          "info": "Unix timestamp",
+          "required": false
+        },
+        {
+          "name": "dateMax",
+          "type": "Number",
+          "info": "Unix timestamp",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTeamInfoByTeamID",
+      "description": "A list of all the teams set up in-game.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "startAtTeamId",
+          "type": "Number",
+          "info": "The team id to start returning results from.",
+          "required": false
+        },
+        {
+          "name": "teamsRequested",
+          "type": "Number",
+          "info": "The amount of teams to return.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTournamentPlayerStats",
+      "description": "Stats about a particular player within a tournament.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "accountId",
+          "type": "Number",
+          "info": "Id of the account",
+          "required": true
+        },
+        {
+          "name": "heroId",
+          "type": "Number",
+          "info": "A list of hero IDs can be found via the GetHeroes method.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getGameItems",
+      "description": "Dota 2 In-game items",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "The language code to provide item names in.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getHeroes",
+      "description": "A list of heroes within Dota 2.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "The language code to provide item names in.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getRarities",
+      "description": "Dota 2 item rarity list.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "language",
+          "type": "String",
+          "info": "The language code to provide item names in.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    },
+    {
+      "name": "getTournamentPrizePool",
+      "description": "The current prizepool for specific tournaments.",
+      "args": [
+        {
+          "name": "apiKey",
+          "type": "credentials",
+          "info": "apiKey from Steam",
+          "required": true
+        },
+        {
+          "name": "leagueId",
+          "type": "Number",
+          "info": "The ID of the league to get the prize pool of.",
+          "required": false
+        }
+      ],
+      "callbacks": [
+        {
+          "name": "error",
+          "info": "Error"
+        },
+        {
+          "name": "success",
+          "info": "Success"
+        }
+      ]
+    }
+  ]
+}
