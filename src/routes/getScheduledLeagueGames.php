@@ -17,10 +17,24 @@ $app->post('/api/Dota2/getScheduledLeagueGames', function ($request, $response, 
 
 
     if (isset($post_data['args']['dateMin']) && strlen($post_data['args']['dateMin']) > 0) {
-        $body['date_min'] = $post_data['args']['dateMin'];
+        if (is_numeric($post_data['args']['dateMin'])) {
+            $body['date_min'] = $post_data['args']['dateMin'];
+        } else {
+            $dateTime = new DateTime($post_data['args']['dateMin']);
+            $dateMin = $dateTime->format('u');
+            $body['date_min'] = $dateMin;
+        }
+
     }
     if (isset($post_data['args']['dateMax']) && strlen($post_data['args']['dateMax']) > 0) {
-        $body['date_max'] = $post_data['args']['dateMax'];
+        if (is_numeric($post_data['args']['dateMax'])) {
+            $body['date_max'] = $post_data['args']['dateMax'];
+        } else {
+            $dateTime = new DateTime($post_data['args']['dateMax']);
+            $dateMax = $dateTime->format('u');
+            $body['date_max'] = $dateMax;
+        }
+
     }
     //requesting remote API
     $client = new GuzzleHttp\Client();

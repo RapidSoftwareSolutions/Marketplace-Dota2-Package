@@ -1,14 +1,24 @@
 [![](https://scdn.rapidapi.com/RapidAPI_banner.png)](https://rapidapi.com/package/Dota2/functions?utm_source=RapidAPIGitHub_Dota2Functions&utm_medium=button&utm_content=RapidAPI_GitHub)
 
-# SteamWeb Package
-SteamWeb
-* Domain: [Steam Web API](http://steampowered.com)
+# Dota2 Package
+Dota2
+* Domain: [Dota2](http://blog.dota2.com)
 * Credentials: apiKey
 
 ## How to get credentials: 
 0. Go to [Steam Website](http://steampowered.com)
 1. Register or log in
 2. Go to [Dev page](http://steamcommunity.com/dev/registerkey) to get your apiKey
+
+## Custom datatypes: 
+ |Datatype|Description|Example
+ |--------|-----------|----------
+ |Datepicker|String which includes date and time|```2016-05-28 00:00:00```
+ |Map|String which includes latitude and longitude coma separated|```50.37, 26.56```
+ |List|Simple array|```["123", "sample"]``` 
+ |Select|String with predefined values|```sample```
+ |Array|Array of objects|```[{"Second name":"123","Age":"12","Photo":"sdf","Draft":"sdfsdf"},{"name":"adi","Second name":"bla","Age":"4","Photo":"asfserwe","Draft":"sdfsdf"}] ```
+ 
 
 ## Dota2.getLeagueListing
 Information about DotaTV-supported leagues.
@@ -40,14 +50,14 @@ A list of matches, filterable by various parameters.
 |--------------------|------------|----------
 | apiKey             | credentials| apiKey from Steam
 | heroId             | Number     | A list of hero IDs can be found via the GetHeroes method.
-| gameMode           | Number     | 0 - None 1 - All Pick 2 - Captain's Mode 3 - Random Draft 4 - Single Draft 5 - All Random  6 - Intro  7 - Diretide 8 - Reverse Captain's Mode 9 - The Greeviling 10 - Tutorial 11 - Mid Only 12 - Least Played 13 - New Player Pool 14 - Compendium Matchmaking 16 - Captain's Draft
-| skill              | Number     | Skill bracket for the matches (Ignored if an account ID is specified). 0 - Any 1 - Normal 2 - High 3 - Very High
+| gameMode           | Select     | 0 - None 1 - All Pick 2 - Captain's Mode 3 - Random Draft 4 - Single Draft 5 - All Random  6 - Intro  7 - Diretide 8 - Reverse Captain's Mode 9 - The Greeviling 10 - Tutorial 11 - Mid Only 12 - Least Played 13 - New Player Pool 14 - Compendium Matchmaking 16 - Captain's Draft
+| skill              | Select     | Skill bracket for the matches (Ignored if an account ID is specified). 0 - Any 1 - Normal 2 - High 3 - Very High
 | minPlayers         | Number     | Minimum amount of players in a match for the match to be returned.
 | accountId          | Number     | 32-bit account ID.
 | leagueId           | String     | Only return matches from this league. A list of league IDs can be found via the GetLeagueListing method.
 | startAtMatchId     | Number     | Start searching for matches equal to or older than this match ID.
 | matchesRequested   | Number     | Amount of matches to include in results (default: 25).
-| tournamentGamesOnly| String     | Whether to limit results to tournament matches. (0 = false, 1 = true)
+| tournamentGamesOnly| Select     | Whether to limit results to tournament matches. (0 = false, 1 = true)
 
 ## Dota2.getMatchHistoryBySequenceNum
 A list of matches ordered by their sequence num.
@@ -64,8 +74,8 @@ A list of scheduled league games coming up.
 | Field  | Type       | Description
 |--------|------------|----------
 | apiKey | credentials| apiKey from Steam
-| dateMin| Number     | Unix timestamp
-| dateMax| Number     | Unix timestamp
+| dateMin| DatePicker | Minimal date
+| dateMax| DatePicker | Maximal date
 
 ## Dota2.getTeamInfoByTeamID
 A list of all the teams set up in-game.
